@@ -2,13 +2,18 @@
 
 namespace Dnsoft\Acl;
 
+use Dnsoft\Acl\Models\Admin;
+use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
+use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AclServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-
+        $this->app->singleton(AdminRepositoryInterface::class, function () {
+            return new AdminRepository(new Admin());
+        });
     }
 
     public function register()
