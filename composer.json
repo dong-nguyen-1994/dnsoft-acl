@@ -1,0 +1,25 @@
+{
+    "name": "dnsoft/acl",
+    "description": "This is module ACL",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Dong Nguyen",
+            "email": "dong.joseph2810@gmail.com"
+        }
+    ],
+    "require": {},
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Dnsoft\\Acl\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dnsoft\\Acl\\AclServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<?php
+
+namespace Dnsoft\Acl\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Role extends Model
+{
+    protected $table = 'admins';
+}
