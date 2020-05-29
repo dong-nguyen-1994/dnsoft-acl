@@ -5,16 +5,23 @@ namespace Dnsoft\Acl;
 use Dnsoft\Acl\Models\Admin;
 use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
 use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Dnsoft\Acl\Http\Middleware\AdminAuth;
 
 class AclServiceProvider extends ServiceProvider
 {
+    protected $policies = [
+        'App\Model' => 'App\Policies\ModelPolicy',
+    ];
+
     public function boot()
     {
         $this->app->singleton(AdminRepositoryInterface::class, function () {
             return new AdminRepository(new Admin());
         });
+
+        $this->loadPermission();
     }
 
     public function register()
@@ -32,5 +39,10 @@ class AclServiceProvider extends ServiceProvider
     {
         $router = $this->app['router'];
         $router->aliasMiddleware('admin.auth', AdminAuth::class);
+    }
+
+    protected function loadPermission()
+    {
+        //Gate::define('');
     }
 }
