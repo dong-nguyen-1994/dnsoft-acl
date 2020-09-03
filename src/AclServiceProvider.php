@@ -2,18 +2,17 @@
 
 namespace Dnsoft\Acl;
 
+use Dnsoft\Acl\Contracts\PermissionManagerInterface;
 use Dnsoft\Acl\Models\Admin;
 use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
 use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
+use Dnsoft\Acl\Supports\PermissionManager;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Dnsoft\Acl\Http\Middleware\AdminAuth;
 
 class AclServiceProvider extends ServiceProvider
 {
-    protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
-    ];
 
     public function boot()
     {
@@ -33,6 +32,9 @@ class AclServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'acl');
 
         $this->registerMiddleware();
+
+        $this->app->singleton(PermissionManagerInterface::class, PermissionManager::class);
+
     }
 
     protected function registerMiddleware()
