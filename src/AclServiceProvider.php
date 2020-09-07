@@ -21,17 +21,21 @@ class AclServiceProvider extends ServiceProvider
         });
 
         $this->loadPermission();
+
+        $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/auth.php');
     }
 
     public function register()
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'acl');
-        $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
+
         $this->mergeConfigFrom(__DIR__.'/../config/acl.php', 'acl');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'acl');
 
         $this->registerMiddleware();
+        $this->registerConfigData();
 
         $this->app->singleton(PermissionManagerInterface::class, PermissionManager::class);
 
@@ -41,6 +45,14 @@ class AclServiceProvider extends ServiceProvider
     {
         $router = $this->app['router'];
         $router->aliasMiddleware('admin.auth', AdminAuth::class);
+    }
+
+    protected function registerConfigData()
+    {
+        $aclConfigData = include __DIR__ .'/../config/acl.php';
+        $authConfig = $this->app['config']->get('auth');
+        $auth = array_merge_recursive_distinct($aclConfigData['auth'], $authConfig);
+        $this->app['config']->set('auth', $auth);
     }
 
     protected function loadPermission()
