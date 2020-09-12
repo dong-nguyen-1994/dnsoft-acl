@@ -20,10 +20,11 @@ class RedirectIfAdminAuth
     public function handle(Request $request, Closure $next, $guard = 'admin')
     {
         if (Auth::guard($guard)->check()) {
-            if (Route::has('dashboard.admin.dashboard')) {
-                return redirect()->route('dashboard.admin.dashboard');
-            }
-            return redirect(config('core.admin_prefix'));
+            $config = config('acl.redirect_if_authenticated', config('core.admin_prefix'));
+
+            $redirect = is_callable($config) ? $config() : $config;
+
+            return redirect($redirect);
         }
         return $next($request);
     }

@@ -25,4 +25,22 @@ return [
             ],
         ],
     ],
+    'redirect_after_login' => function () {
+        if (Route::has('admin.dashboard.index')) {
+            return route('admin.dashboard.index');
+        }
+        return config('core.admin_prefix');
+    },
+
+    'redirect_after_logout' => function () {
+        return route('admin.login');
+    },
+
+    'redirect_if_authenticated' => function () {
+        if (Route::has('admin.dashboard.index')) {
+            return route('admin.dashboard.index');
+        }
+
+        return config('core.admin_prefix');
+    },
 ];

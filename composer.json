@@ -8,7 +8,9 @@
             "email": "dong.joseph2810@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "dnsoft/core": "dev-master"
+    },
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
