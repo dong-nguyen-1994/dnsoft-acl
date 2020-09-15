@@ -9,7 +9,10 @@ class Role extends Model
     protected $table = 'roles';
 
     protected $fillable = [
-        'name', 'slug', 'permissions'
+        'name',
+        'display_name',
+        'description',
+        'permissions',
     ];
 
     protected $casts = [

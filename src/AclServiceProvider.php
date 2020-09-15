@@ -4,8 +4,11 @@ namespace Dnsoft\Acl;
 
 use Dnsoft\Acl\Contracts\PermissionManagerInterface;
 use Dnsoft\Acl\Models\Admin;
+use Dnsoft\Acl\Models\Role;
 use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
 use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
+use Dnsoft\Acl\Repositories\Eloquents\RoleRepository;
+use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
 use Dnsoft\Acl\Supports\PermissionManager;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -18,6 +21,10 @@ class AclServiceProvider extends ServiceProvider
     {
         $this->app->singleton(AdminRepositoryInterface::class, function () {
             return new AdminRepository(new Admin());
+        });
+
+        $this->app->singleton(RoleRepositoryInterface::class, function () {
+            return new RoleRepository(new Role());
         });
 
         $this->loadPermission();

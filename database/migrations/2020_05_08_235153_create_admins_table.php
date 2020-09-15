@@ -20,6 +20,7 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(true);
             $table->timestamp('email_verified_at')->nullable();
+            $table->text('permissions')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

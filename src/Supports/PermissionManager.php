@@ -2,7 +2,22 @@
 
 namespace Dnsoft\Acl\Supports;
 
-class PermissionManager
-{
+use Dnsoft\Acl\Contracts\PermissionManagerInterface;
 
+class PermissionManager implements PermissionManagerInterface
+{
+    protected $permissions = [];
+
+    /**
+     * @return array
+     */
+    public function all()
+    {
+        return $this->permissions;
+    }
+
+    public function add($key, $label)
+    {
+
+    }
 }
