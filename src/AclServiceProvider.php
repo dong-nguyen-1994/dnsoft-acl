@@ -3,14 +3,13 @@
 namespace Dnsoft\Acl;
 
 use Dnsoft\Acl\Contracts\PermissionManagerInterface;
+use Dnsoft\Acl\Facades\Permission;
 use Dnsoft\Acl\Models\Admin;
 use Dnsoft\Acl\Models\Role;
 use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
 use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
 use Dnsoft\Acl\Repositories\Eloquents\RoleRepository;
 use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
-use Dnsoft\Acl\Supports\PermissionManager;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Dnsoft\Acl\Http\Middleware\AdminAuth;
 
@@ -27,7 +26,7 @@ class AclServiceProvider extends ServiceProvider
             return new RoleRepository(new Role());
         });
 
-        $this->loadPermission();
+        $this->registerPermissions();
 
         $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/auth.php');
@@ -62,8 +61,11 @@ class AclServiceProvider extends ServiceProvider
         $this->app['config']->set('auth', $auth);
     }
 
-    protected function loadPermission()
+    protected function registerPermissions()
     {
-        //Gate::define('');
+        Permission::add('role.index', __('acl::permission.role.index'));
+        Permission::add('role.create', __('acl::permission.role.create'));
+        Permission::add('role.edit', __('acl::permission.role.edit'));
+        Permission::add('role.destroy', __('acl::permission.role.destroy'));
     }
 }

@@ -4,8 +4,11 @@ namespace Dnsoft\Acl\Http\Controllers\Admin;
 
 use Dnsoft\Acl\Http\Requests\RoleRequest;
 use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
 
 class RoleController extends Controller
 {
@@ -55,7 +58,7 @@ class RoleController extends Controller
     /**
      * @param RoleRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(RoleRequest $request, $id)
     {
@@ -70,5 +73,26 @@ class RoleController extends Controller
         return redirect()
             ->route('admin.role.index')
             ->with('success', __('acl::role.notification.updated'));
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return JsonResponse|RedirectResponse
+     */
+    public function destroy($id, Request $request)
+    {
+        $this->roleRepository->delete($id);
+
+        if ($request->wantsJson()) {
+            Session::flash('success', __('acl::role.notification.deleted'));
+            return response()->json([
+                'success' => true,
+            ]);
+        }
+
+        return redirect()
+            ->route('admin.role.index')
+            ->with('success', __('acl::role.notification.deleted'));
     }
 }
