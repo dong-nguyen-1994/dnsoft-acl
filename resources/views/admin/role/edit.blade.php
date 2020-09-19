@@ -53,7 +53,11 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="card-body">
-                            <dnsoft-tree></dnsoft-tree>
+                            <dnsoft-tree
+                                name="permissions"
+                                :data='@json(\Dnsoft\Acl\Facades\Permission::allTreeWithoutKey())'
+                                :value='@json(json_decode(object_get($item, 'permissions')))'
+                            ></dnsoft-tree>
                         </div>
                     </div>
                     <!-- /.card -->

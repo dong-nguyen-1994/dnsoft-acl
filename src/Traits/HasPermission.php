@@ -8,8 +8,6 @@ trait HasPermission
 {
     protected $allPermissions;
 
-    protected $loaded = false;
-
     public function hasPermission($key)
     {
         if ($this->is_admin) {
@@ -20,25 +18,17 @@ trait HasPermission
                 return true;
             }
         }
+        $this->loadAllPermissions();
+
+        return $this->allPermissions->contains($key);
     }
 
-
-    protected function loadPermission()
+    public function loadAllPermissions()
     {
-        if (!$this->loaded) {
-            $this->allPermissions = new Collection(json_decode($this->permissions, true));
-        }
-
         foreach ($this->roles as $role) {
             $rolePermissions = new Collection(json_decode($role->permissions, true));
             $this->allPermissions = $this->allPermissions->merge($rolePermissions)->unique();
         }
-    }
-
-    public function allPermissions()
-    {
-        $this->loadPermission();
-
-        return $this->allPermissions;
+        $this->allPermissions = $this->permissions;
     }
 }

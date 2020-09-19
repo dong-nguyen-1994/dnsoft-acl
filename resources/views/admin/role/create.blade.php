@@ -57,9 +57,8 @@
                         <div class="card-body">
                             <dnsoft-tree
                                 name="permissions"
-                                :data="@json(\Dnsoft\Acl\Facades\Permission::allTreeWithoutKey())"
-{{--                                :data="@json(json_decode(object_get($item, 'permissions')))"--}}
-                                :value="@json(json_decode(object_get($item, 'permissions')))"
+                                :data='@json(\Dnsoft\Acl\Facades\Permission::allTreeWithoutKey())'
+                                :value='@json(json_decode(object_get($item, 'permissions')))'
                             ></dnsoft-tree>
                         </div>
                     </div>

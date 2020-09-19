@@ -4,6 +4,8 @@ namespace Dnsoft\Acl;
 
 use Dnsoft\Acl\Contracts\PermissionManagerInterface;
 use Dnsoft\Acl\Facades\Permission;
+use Dnsoft\Acl\Http\Middleware\AdminPermission;
+use Dnsoft\Acl\Http\Middleware\RedirectIfAdminAuth;
 use Dnsoft\Acl\Models\Admin;
 use Dnsoft\Acl\Models\Role;
 use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
@@ -51,6 +53,8 @@ class AclServiceProvider extends ServiceProvider
     {
         $router = $this->app['router'];
         $router->aliasMiddleware('admin.auth', AdminAuth::class);
+        $router->aliasMiddleware('admin.can', AdminPermission::class);
+        $router->aliasMiddleware('admin.guest', RedirectIfAdminAuth::class);
     }
 
     protected function registerConfigData()
