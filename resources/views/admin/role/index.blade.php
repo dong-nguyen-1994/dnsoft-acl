@@ -1,41 +1,47 @@
 @extends('core::admin.master')
 
 @section('content-header')
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">{{ __('acl::role.index.page_title') }}</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Index</li>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.role.index') }}">{{ __('acl::role.index.page_title') }}</a></li>
                     </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+                <h4 class="page-title">Collapsed Sidebar</h4>
+            </div>
+        </div>
     </div>
 @endsection
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">{{ __('acl::role.index.page_title') }}</h3>
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <h4 class="header-title">Add &amp; Remove Rows</h4>
+                    <p class="sub-header">
+                        Add or remove rows from your FooTable.
+                    </p>
 
-                        <div class="card-tools">
-                            <div class="input-group input-group-sm">
-                                <a class="btn btn-primary" href="{{ route('admin.role.create') }}"><i class="fas fa-plus">Add</i></a>
+                    <div class="mb-2">
+                        <div class="row">
+                            <div class="col-12 text-sm-center form-inline">
+                                <div class="form-group mr-2">
+                                    <a id="demo-btn-addrow" class="btn btn-primary" href="{{ route('admin.role.create') }}"><i class="mdi mdi-plus-circle mr-2"></i> Add New Row</a>
+                                </div>
+                                <div class="form-group">
+                                    <input id="demo-input-search2" type="text" placeholder="Search" class="form-control" autocomplete="off">
+                                </div>
                             </div>
-
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap">
+                        <table class="table table-centered table-striped table-bordered mb-0 toggle-circle">
                             <thead>
                             <tr>
                                 <th>ID</th>
