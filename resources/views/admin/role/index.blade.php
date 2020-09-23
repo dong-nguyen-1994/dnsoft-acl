@@ -1,7 +1,6 @@
 @extends('core::admin.master')
 
 @section('content-header')
-
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">

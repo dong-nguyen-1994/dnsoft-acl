@@ -1,21 +1,19 @@
 @extends('core::admin.master')
 
 @section('content-header')
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">{{ __('acl::role.create.page_title') }}</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.role.index') }}">{{ __('acl::role.create.breadcrumb') }}</a></li>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.role.index') }}">{{ __('acl::role.index.page_title') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('acl::role.create.index') }}</li>
                     </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+                <h4 class="page-title">Collapsed Sidebar</h4>
+            </div>
+        </div>
     </div>
 @endsection
 
