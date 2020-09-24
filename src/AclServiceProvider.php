@@ -3,6 +3,7 @@
 namespace Dnsoft\Acl;
 
 use Dnsoft\Acl\Contracts\PermissionManagerInterface;
+use Dnsoft\Acl\Events\AclAdminMenuRegistered;
 use Dnsoft\Acl\Facades\Permission;
 use Dnsoft\Acl\Http\Middleware\AdminPermission;
 use Dnsoft\Acl\Http\Middleware\RedirectIfAdminAuth;
@@ -78,7 +79,11 @@ class AclServiceProvider extends ServiceProvider
     public function registerAdminMenu()
     {
         Event::listen(CoreAdminMenuRegistered::class, function($menu) {
+
             $menu->add('Admin', ['route' => 'admin.profile.index', 'parent' => $menu->system->id])->data('order', 1);
+            $menu->add('Role', ['route' => 'admin.role.index', 'parent' => $menu->system->id])->data('order', 2);
+
+            event(AclAdminMenuRegistered::class, $menu);
         });
     }
 }
