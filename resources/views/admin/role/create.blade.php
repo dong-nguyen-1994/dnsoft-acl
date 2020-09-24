@@ -19,7 +19,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form role="form" action="{{ route('admin.role.store') }}" method="POST">
+        <form role="form" action="{{ route('admin.profile.store') }}" method="POST">
             @csrf
             <div class="row">
                 <!-- left column -->
@@ -27,12 +27,12 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('acl::role.create.page_title') }}</h3>
+                            <h3 class="card-title">{{ __('acl::profile.create.page_title') }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
 
-                        @include('acl::admin.role._field')
+                        @include('acl::profile.role._field')
 
                         <!-- /.card-body -->
 

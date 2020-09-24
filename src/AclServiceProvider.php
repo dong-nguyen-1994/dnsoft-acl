@@ -12,12 +12,13 @@ use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
 use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
 use Dnsoft\Acl\Repositories\Eloquents\RoleRepository;
 use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
+use Dnsoft\Core\Events\CoreAdminMenuRegistered;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Dnsoft\Acl\Http\Middleware\AdminAuth;
 
 class AclServiceProvider extends ServiceProvider
 {
-
     public function boot()
     {
         $this->app->singleton(AdminRepositoryInterface::class, function () {
@@ -29,6 +30,7 @@ class AclServiceProvider extends ServiceProvider
         });
 
         $this->registerPermissions();
+        $this->registerAdminMenu();
 
         $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/auth.php');
@@ -71,5 +73,12 @@ class AclServiceProvider extends ServiceProvider
         Permission::add('role.create', __('acl::permission.role.create'));
         Permission::add('role.edit', __('acl::permission.role.edit'));
         Permission::add('role.destroy', __('acl::permission.role.destroy'));
+    }
+
+    public function registerAdminMenu()
+    {
+        Event::listen(CoreAdminMenuRegistered::class, function($menu) {
+            $menu->add('Admin', ['route' => 'admin.profile.index', 'parent' => $menu->system->id])->data('order', 1);
+        });
     }
 }
