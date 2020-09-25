@@ -14,8 +14,8 @@ return [
     ],
 
     'index' => [
-        'page_title'    => 'List Roles',
-        'page_subtitle' => 'List Roles',
+        'page_title'    => 'Role',
+        'page_subtitle' => 'Role',
         'breadcrumb'    => 'List',
     ],
 
