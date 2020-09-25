@@ -14,6 +14,7 @@ use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
 use Dnsoft\Acl\Repositories\Eloquents\RoleRepository;
 use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
 use Dnsoft\Core\Events\CoreAdminMenuRegistered;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Dnsoft\Acl\Http\Middleware\AdminAuth;
@@ -32,6 +33,7 @@ class AclServiceProvider extends ServiceProvider
 
         $this->registerPermissions();
         $this->registerAdminMenu();
+        $this->registerBladeDirectives();
 
         $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/auth.php');
@@ -74,6 +76,17 @@ class AclServiceProvider extends ServiceProvider
         Permission::add('role.create', __('acl::permission.role.create'));
         Permission::add('role.edit', __('acl::permission.role.edit'));
         Permission::add('role.destroy', __('acl::permission.role.destroy'));
+    }
+
+    protected function registerBladeDirectives()
+    {
+        Blade::directive('admincan', function ($expression) {
+            return "<?php if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->hasPermission({$expression})): ?>";
+        });
+
+        Blade::directive('endadmincan', function () {
+            return "<?php endif; ?>";
+        });
     }
 
     public function registerAdminMenu()
