@@ -93,8 +93,8 @@ class AclServiceProvider extends ServiceProvider
     {
         Event::listen(CoreAdminMenuRegistered::class, function($menu) {
 
-            $menu->add('Admin', ['route' => 'admin.profile.index', 'parent' => $menu->system->id])->data('order', 1);
-            $menu->add('Role', ['route' => 'admin.role.index', 'parent' => $menu->system->id])->data('order', 2);
+            $menu->add('Admin', ['route' => 'admin.profile.index', 'parent' => $menu->system->id])->data('order', 1)->prepend('<i class="fas fa-user-md"></i>');
+            $menu->add('Role', ['route' => 'admin.role.index', 'parent' => $menu->system->id])->data('order', 2)->prepend('<i class="fab fa-critical-role"></i>');
 
             event(AclAdminMenuRegistered::class, $menu);
         });
