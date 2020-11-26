@@ -3,12 +3,14 @@
 namespace Dnsoft\Acl\Models;
 
 use Dnsoft\Acl\Traits\HasPermission;
+use Dnsoft\Core\Traits\CacheableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
     use Notifiable, HasPermission;
+    use CacheableTrait;
 
     protected $table = 'admins';
 
