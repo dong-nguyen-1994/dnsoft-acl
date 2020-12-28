@@ -1,5 +1,7 @@
 @extends('core::admin.master')
 
+@section('meta_title', __('acl::role.edit.page_title'))
+
 @section('content-header')
     <div class="row">
         <div class="col-12">
@@ -11,7 +13,7 @@
                         <li class="breadcrumb-item active">{{ __('acl::role.edit.index') }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Collapsed Sidebar</h4>
+                <h4 class="page-title">{{ __('acl::role.edit.page_title') }}</h4>
             </div>
         </div>
     </div>

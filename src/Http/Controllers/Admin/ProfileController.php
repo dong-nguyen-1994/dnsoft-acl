@@ -4,6 +4,7 @@ namespace Dnsoft\Acl\Http\Controllers\Admin;
 
 use Dnsoft\Acl\Http\Requests\ProfileRequest;
 use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
+use Dnsoft\Core\Facades\MenuAdmin;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,12 +25,13 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $items = $this->adminRepository->paginate(2);
+        $items = $this->adminRepository->paginate(20);
         return view('acl::admin.profile.index', compact('items'));
     }
 
     public function create()
     {
+        MenuAdmin::activeMenu('admin');
         $item = null;
         return view('acl::admin.profile.create', compact('item'));
     }
@@ -51,18 +53,19 @@ class ProfileController extends Controller
 
     public function edit($id)
     {
+        MenuAdmin::activeMenu('admin');
         $item = $this->adminRepository->getById($id);
         return view('acl::admin.profile.edit', compact('item'));
     }
 
     /**
-     * @param RoleRequest $request
+     * @param ProfileRequest $request
      * @param $id
      * @return RedirectResponse
      */
     public function update(ProfileRequest $request, $id)
     {
-        $item = $this->adminRepository->updateById($request->all(), $id);
+        $item = $this->adminRepository->updateAndSyncRoles($id, $request->all(), $request->input('roles', []));
 
         if ($request->input('continue')) {
             return redirect()

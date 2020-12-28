@@ -10,7 +10,7 @@
                         <li class="breadcrumb-item active"><a href="{{ route('admin.role.index') }}">{{ __('acl::role.index.page_title') }}</a></li>
                     </ol>
                 </div>
-                <h4 class="page-title">Collapsed Sidebar</h4>
+                <h4 class="page-title">{{ __('acl::role.index.page_title') }}</h4>
             </div>
         </div>
     </div>
@@ -21,16 +21,11 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card-box">
-                    <h4 class="header-title">Add &amp; Remove Rows</h4>
-                    <p class="sub-header">
-                        Add or remove rows from your FooTable.
-                    </p>
-
                     <div class="mb-2">
                         <div class="row">
                             <div class="col-12 text-sm-center form-inline">
                                 <div class="form-group mr-2">
-                                    <a id="demo-btn-addrow" class="btn btn-primary" href="{{ route('admin.role.create') }}"><i class="mdi mdi-plus-circle mr-2"></i> Add New Row</a>
+                                    <a id="demo-btn-addrow" class="btn btn-primary" href="{{ route('admin.role.create') }}"><i class="mdi mdi-plus-circle mr-2"></i> Add New</a>
                                 </div>
                                 <div class="form-group">
                                     <input id="demo-input-search2" type="text" placeholder="Search" class="form-control" autocomplete="off">
@@ -59,9 +54,12 @@
                                 <td>{{ $item->created_at }}</td>
 {{--                                <td><span class="tag tag-success">Approved</span></td>--}}
                                 <td class="text-right">
+                                    @admincan('acl.admin.role.edit')
                                     <a href="{{ route('admin.role.edit', $item->id) }}" class="btn btn-success-soft btn-sm mr-1" style="background-color: rgb(211 250 255); color: #0fac04; width: 32px;border-color: rgb(167 255 247); border: 1px solid">
-                                        <i class="fas fa-pencil-alt" style="font-size: 15px; margin-left: -6px; margin-top: 4px"></i>
+                                        <i class="fas fa-pencil-alt" style="font-size: 15px; margin-left: -5px; margin-top: 5px"></i>
                                     </a>
+                                    @endadmincan
+
                                     <button-delete url-delete="{{ route('admin.role.destroy', $item->id) }}"></button-delete>
                                 </td>
                             </tr>

@@ -1,5 +1,7 @@
 @extends('core::admin.master')
 
+@section('meta_title', __('acl::profile.index.page_title'))
+
 @section('content-header')
     <div class="row">
         <div class="col-12">
@@ -11,7 +13,7 @@
                         <li class="breadcrumb-item active">{{ __('acl::profile.create.index') }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Collapsed Sidebar</h4>
+                <h4 class="page-title">{{ __('acl::profile.create.page_title') }}</h4>
             </div>
         </div>
     </div>
@@ -22,45 +24,17 @@
         <form role="form" action="{{ route('admin.profile.store') }}" method="POST">
             @csrf
             <div class="row">
-                <!-- left column -->
-                <div class="col-md-6">
-                    <!-- general form elements -->
+                <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('acl::profile.create.page_title') }}</h3>
+                            <h4 class="card-title mb-1">{{ __('acl::profile.create.page_title') }}</h4>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-
                         @include('acl::admin.profile._field')
-
-                    <!-- /.card-body -->
-
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">{{ __('core::button.save') }}</button>
                             <button class="btn btn-secondary" name="continue" value="1" type="submit">{{ __('core::button.save_and_edit') }}</button>
                         </div>
                     </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-md-6">
-                {{--                    <dnsoft-tree></dnsoft-tree>--}}
-                <!-- general form elements -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">{{ __('acl::role.permissions') }}</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <div class="card-body">
-                            <dnsoft-tree
-                                name="permissions"
-                                :data='@json(\Dnsoft\Acl\Facades\Permission::allTreeWithoutKey())'
-                                :value='@json(json_decode(object_get($item, 'permissions')))'
-                            ></dnsoft-tree>
-                        </div>
-                    </div>
-                    <!-- /.card -->
                 </div>
             </div>
         </form>

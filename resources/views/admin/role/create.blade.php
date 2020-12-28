@@ -11,7 +11,7 @@
                         <li class="breadcrumb-item active">{{ __('acl::role.create.index') }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Collapsed Sidebar</h4>
+                <h4 class="page-title">{{ __('acl::role.create.page_title') }}</h4>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form role="form" action="{{ route('admin.profile.store') }}" method="POST">
+        <form role="form" action="{{ route('admin.role.store') }}" method="POST">
             @csrf
             <div class="row">
                 <!-- left column -->

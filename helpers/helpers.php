@@ -22,6 +22,27 @@ if (!function_exists('admin_can')) {
     }
 }
 
+if (!function_exists('get_roles_options'))
+{
+    /**
+     * @return array
+     */
+    function get_roles_options(): array
+    {
+        $options = [];
+
+        $categoryTreeList = \Dnsoft\Acl\Models\Role::all();
+        foreach ($categoryTreeList as $item) {
+            $options[] = [
+                'value' => $item->id,
+                'label' => trim(str_pad('', $item->depth * 3, '-')).' '.$item->name,
+            ];
+        }
+
+        return $options;
+    }
+}
+
 if (!function_exists('current_admin')) {
     /**
      * Get current admin account

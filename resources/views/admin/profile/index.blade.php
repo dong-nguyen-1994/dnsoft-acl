@@ -52,13 +52,19 @@
                                     <td><a href="{{ route('admin.profile.edit', $item->id) }}">{{ $item->id }}</a></td>
                                     <td><a href="{{ route('admin.profile.edit', $item->id) }}">{{ $item->name }}</a></td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->is_admin }}</td>
+                                    <td>
+                                        @if($item->is_admin)
+                                            <i class="fas fa-check text-success"></i>
+                                        @endif
+                                    </td>
                                     <td>{{ $item->created_at }}</td>
-                                    {{--                                <td><span class="tag tag-success">Approved</span></td>--}}
                                     <td class="text-right">
-                                        <a href="{{ route('admin.profile.edit', $item->id) }}" class="btn btn-success-soft btn-sm mr-1" style="background-color: rgb(167 244 255);color: #0fac04; width: 32px">
-                                            <i class="fas fa-pencil-alt" style="font-size: 15px; margin-left: -6px;"></i>
+                                        @admincan('admin.profile.edit')
+                                        <a href="{{ route('admin.profile.edit', $item->id) }}" class="btn btn-success-soft btn-sm mr-1" style="background-color: rgb(211 250 255); color: #0fac04; width: 32px;border-color: rgb(167 255 247); border: 1px solid">
+                                            <i class="fas fa-pencil-alt" style="font-size: 15px; margin-left: -5px; margin-top: 5px"></i>
                                         </a>
+                                        @endadmincan
+
                                         <button-delete url-delete="{{ route('admin.profile.destroy', $item->id) }}"></button-delete>
                                     </td>
                                 </tr>

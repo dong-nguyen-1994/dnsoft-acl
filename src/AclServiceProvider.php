@@ -37,6 +37,8 @@ class AclServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/auth.php');
+
+        require_once __DIR__. '/../helpers/helpers.php';
     }
 
     public function register()

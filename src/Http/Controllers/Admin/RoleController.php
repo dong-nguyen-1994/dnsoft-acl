@@ -4,6 +4,7 @@ namespace Dnsoft\Acl\Http\Controllers\Admin;
 
 use Dnsoft\Acl\Http\Requests\RoleRequest;
 use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
+use Dnsoft\Core\Facades\MenuAdmin;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ class RoleController extends Controller
 
     public function create()
     {
+        MenuAdmin::activeMenu('role');
         $item = null;
         return view('acl::admin.role.create', compact('item'));
     }
@@ -51,6 +53,7 @@ class RoleController extends Controller
 
     public function edit($id)
     {
+        MenuAdmin::activeMenu('role');
         $item = $this->roleRepository->getById($id);
         return view('acl::admin.role.edit', compact('item'));
     }
