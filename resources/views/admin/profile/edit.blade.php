@@ -12,7 +12,7 @@
                         <li class="breadcrumb-item active">{{ __('acl::profile.edit.index') }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Collapsed Sidebar</h4>
+                <h4 class="page-title">{{ __('acl::profile.edit.page_title') }}</h4>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
+                            <h4 class="card-title mt-1">{{ __('acl::profile.edit.page_title') }}</h4>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
