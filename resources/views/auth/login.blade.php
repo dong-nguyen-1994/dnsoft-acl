@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Minton - Responsive Admin Dashboard Template</title>
+    <title>Dnsoft - Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -28,7 +28,7 @@
                     <div class="card-body p-4">
 
                         <div class="text-center w-75 m-auto">
-                            <a href="index.html">
+                            <a href="#">
                                 <span><img src="{{ asset('vendor\\dnsoft\\admin\\') }}assets\images\logo-dark.png" alt="" height="22"></span>
                             </a>
                             <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
