@@ -14,6 +14,7 @@ use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
 use Dnsoft\Acl\Repositories\Eloquents\RoleRepository;
 use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
 use Dnsoft\Core\Events\CoreAdminMenuRegistered;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
@@ -39,6 +40,8 @@ class AclServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../routes/auth.php');
 
         require_once __DIR__. '/../helpers/helpers.php';
+
+        AliasLoader::getInstance()->alias('Permission', Permission::class);
     }
 
     public function register()
@@ -103,7 +106,7 @@ class AclServiceProvider extends ServiceProvider
                     'route' => 'admin.profile.index',
                     'parent' => $menu->user_manager->id
                 ])->data('order', 1)->prepend('<i class="fas fa-user-md"></i>');
-            
+
                 $menu->add('Role', [
                     'route' => 'admin.role.index',
                     'parent' => $menu->user_manager->id
