@@ -6,29 +6,46 @@ use Illuminate\Support\Collection;
 
 trait HasPermission
 {
+    /**
+     * @var Collection
+     */
     protected $allPermissions;
 
-    public function hasPermission($key)
+    protected $loaded = false;
+
+    protected function loadPermission()
+    {
+        if (!$this->loaded) {
+            $this->allPermissions = new Collection(json_decode($this->permissions, true));
+        }
+
+        foreach ($this->roles as $role) {
+            $rolePermissions = new Collection(json_decode($role->permissions, true));
+            $this->allPermissions = $this->allPermissions->merge($rolePermissions)->unique();
+        }
+    }
+
+    public function allPermissions(): Collection
+    {
+        $this->loadPermission();
+
+        return $this->allPermissions;
+    }
+
+    public function hasPermission($key): bool
     {
         if ($this->is_admin) {
             return true;
         }
+
         foreach ($this->roles as $role) {
             if ($role->is_admin) {
                 return true;
             }
         }
-        $this->loadAllPermissions();
+
+        $this->loadPermission();
 
         return $this->allPermissions->contains($key);
-    }
-
-    public function loadAllPermissions()
-    {
-        foreach ($this->roles as $role) {
-            $rolePermissions = new Collection(json_decode($role->permissions, true));
-            $this->allPermissions = $this->allPermissions->merge($rolePermissions)->unique();
-        }
-        $this->allPermissions = $this->permissions;
     }
 }

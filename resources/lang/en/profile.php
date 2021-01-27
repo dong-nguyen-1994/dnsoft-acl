@@ -1,6 +1,6 @@
 <?php
 return [
-    'page_title' => 'Profile',
+    'page_title' => 'Admin',
 
     'name'                  => 'Name',
     'email'                 => 'Email',
@@ -19,28 +19,28 @@ return [
     ],
 
     'index' => [
-        'page_title'    => 'Profile',
-        'page_subtitle' => 'Profile',
-        'breadcrumb'    => 'Profile',
+        'page_title'    => 'Admin',
+        'page_subtitle' => 'Admin',
+        'breadcrumb'    => 'Admin',
     ],
 
     'create' => [
         'index' => 'Create',
-        'page_title'    => 'Create Profile',
-        'page_subtitle' => 'Create Profile',
+        'page_title'    => 'Create Admin',
+        'page_subtitle' => 'Create Admin',
         'breadcrumb'    => 'Profile',
     ],
 
     'edit' => [
         'index' => 'Edit',
-        'page_title'    => 'Edit Profile',
-        'page_subtitle' => 'Edit Profile',
+        'page_title'    => 'Edit Admin',
+        'page_subtitle' => 'Edit Admin',
         'breadcrumb'    => 'Profile',
     ],
 
     'notification' => [
-        'created' => 'Account successfully created!',
-        'updated' => 'Account successfully updated!',
-        'deleted' => 'Account successfully deleted!',
+        'created' => 'Admin successfully created!',
+        'updated' => 'Admin successfully updated!',
+        'deleted' => 'Admin successfully deleted!',
     ],
 ];

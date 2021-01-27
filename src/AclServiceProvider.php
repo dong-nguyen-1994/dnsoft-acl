@@ -81,6 +81,11 @@ class AclServiceProvider extends ServiceProvider
         Permission::add('role.create', __('acl::permission.role.create'));
         Permission::add('role.edit', __('acl::permission.role.edit'));
         Permission::add('role.destroy', __('acl::permission.role.destroy'));
+
+        Permission::add('admin.index', __('acl::permission.admin.index'));
+        Permission::add('admin.create', __('acl::permission.admin.create'));
+        Permission::add('admin.edit', __('acl::permission.admin.edit'));
+        Permission::add('admin.destroy', __('acl::permission.admin.destroy'));
     }
 
     protected function registerBladeDirectives()

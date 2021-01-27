@@ -7,10 +7,10 @@ return [
         'destroy' => 'Delete Role',
     ],
 
-    'user' => [
-        'index'   => 'List Users',
-        'create'  => 'Create User',
-        'edit'    => 'Edit User',
-        'destroy' => 'Delete User',
+    'admin' => [
+        'index'   => 'List Admin',
+        'create'  => 'Create Admin',
+        'edit'    => 'Edit Admin',
+        'destroy' => 'Delete Admin',
     ],
 ];
