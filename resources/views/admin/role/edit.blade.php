@@ -20,50 +20,47 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <form role="form" method="POST" action="{{ route('admin.role.update', $item->id) }}">
-            @csrf
-            @method('PUT')
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-6">
-                    <!-- general form elements -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">{{ __('acl::role.edit.page_title') }}</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        @include('acl::admin.role._field')
-                        <!-- /.card-body -->
-
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">{{ __('core::button.save') }}</button>
-                            <button class="btn btn-secondary" name="continue" value="1" type="submit">{{ __('core::button.save_and_edit') }}</button>
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-md-6">
+    <form role="form" method="POST" action="{{ route('admin.role.update', $item->id) }}">
+        @csrf
+        @method('PUT')
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
                 <!-- general form elements -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">{{ __('acl::role.permissions') }}</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <div class="card-body">
-                            <dnsoft-tree
-                                name="permissions"
-                                :data='@json(\Dnsoft\Acl\Facades\Permission::allTreeWithoutKey())'
-                                :value='@json(json_decode(object_get($item, 'permissions')))'
-                            ></dnsoft-tree>
-                        </div>
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ __('acl::role.edit.page_title') }}</h3>
                     </div>
-                    <!-- /.card -->
-                </div>
-            </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    @include('acl::admin.role._field')
+                    <!-- /.card-body -->
 
-        </form>
-    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">{{ __('core::button.save') }}</button>
+                        <button class="btn btn-secondary" name="continue" value="1" type="submit">{{ __('core::button.save_and_edit') }}</button>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+            <div class="col-md-6">
+            <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ __('acl::role.permissions') }}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                        <dnsoft-tree
+                            name="permissions"
+                            :data='@json(\Dnsoft\Acl\Facades\Permission::allTreeWithoutKey())'
+                            :value='@json(json_decode(object_get($item, 'permissions')))'
+                        ></dnsoft-tree>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </form>
 @stop
