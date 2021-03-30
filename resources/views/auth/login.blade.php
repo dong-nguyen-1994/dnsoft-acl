@@ -29,9 +29,9 @@
 
                         <div class="text-center w-75 m-auto">
                             <a href="#">
-                                <span><img src="{{ asset('vendor/dnsoft/admin/img/dnsoft.gif') }}" alt="" width="180"></span>
+                                <span><img src="{{ asset('vendor/dnsoft/admin/img/logo.png') }}" alt="" width="180"></span>
                             </a>
-                            <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
+                            <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
                         </div>
 
                         <form action="{{ route('admin.login') }}" method="post">
