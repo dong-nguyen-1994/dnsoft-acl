@@ -8,7 +8,7 @@ return [
     'email'       => 'Email',
     'password'    => 'Mật khẩu',
     'created_at'  => 'Ngày tạo',
-    'is_admin'    => 'Là quản trị viên',
+    'is_admin'    => 'Là quản trị viên cao cấp nhất hệ thống',
     'roles'       => 'Vai trò',
     'permissions' => 'Mở rộng quyền hạn',
 

@@ -8,7 +8,7 @@ return [
     'email'       => 'Email',
     'password'    => 'Password',
     'created_at'  => 'Created At',
-    'is_admin'    => 'Is Admin',
+    'is_admin'    => 'Is Administration Of System',
     'roles'       => 'Roles',
     'permissions' => 'Extend Permissions',
 

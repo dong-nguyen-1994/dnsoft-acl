@@ -20,6 +20,7 @@ return [
     ],
 
     'create' => [
+        'index' => 'Tạo mới',
         'page_title'    => 'Tạo mới vai trò',
         'page_subtitle' => 'Tạo mới vai trò',
         'breadcrumb'    => 'Vai trò',
