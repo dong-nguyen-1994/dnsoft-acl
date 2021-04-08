@@ -17,70 +17,68 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card-box">
-                    <div class="mb-2">
-                        <div class="row">
-                            <div class="col-12 text-sm-center form-inline">
-                                <div class="form-group mr-2">
-                                    <a id="demo-btn-addrow" class="btn btn-primary" href="{{ route('admin.profile.create') }}"><i class="mdi mdi-plus-circle mr-2"></i> Add New</a>
-                                </div>
-                                <div class="form-group">
-                                    <input id="demo-input-search2" type="text" placeholder="Search" class="form-control" autocomplete="off">
-                                </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box">
+                <div class="mb-2">
+                    <div class="row">
+                        <div class="col-12 text-sm-center form-inline">
+                            <div class="form-group mr-2">
+                                <a id="demo-btn-addrow" class="btn btn-primary" href="{{ route('admin.profile.create') }}"><i class="mdi mdi-plus-circle mr-2"></i> Add New</a>
+                            </div>
+                            <div class="form-group">
+                                <input id="demo-input-search2" type="text" placeholder="Search" class="form-control" autocomplete="off">
                             </div>
                         </div>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-centered table-striped table-bordered mb-0 toggle-circle">
-                            <thead>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-centered table-striped table-bordered mb-0 toggle-circle">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>{{ __('acl::profile.name') }}</th>
+                            <th>{{ __('acl::profile.email') }}</th>
+                            <th>{{ __('acl::profile.is_admin') }}</th>
+                            <th>{{ __('acl::profile.created_at') }}</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($items as $item)
                             <tr>
-                                <th>ID</th>
-                                <th>{{ __('acl::profile.name') }}</th>
-                                <th>{{ __('acl::profile.email') }}</th>
-                                <th>{{ __('acl::profile.is_admin') }}</th>
-                                <th>{{ __('acl::profile.created_at') }}</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($items as $item)
-                                <tr>
-                                    <td><a href="{{ route('admin.profile.edit', $item->id) }}">{{ $item->id }}</a></td>
-                                    <td><a href="{{ route('admin.profile.edit', $item->id) }}">{{ $item->name }}</a></td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>
-                                        @if($item->is_admin)
-                                            <i class="fas fa-check text-success"></i>
-                                        @endif
-                                    </td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td class="text-right">
-                                        @admincan('admin.profile.edit')
-                                        <a href="{{ route('admin.profile.edit', $item->id) }}" class="btn btn-success-soft btn-sm mr-1" style="background-color: rgb(211 250 255); color: #0fac04; width: 32px;border-color: rgb(167 255 247); border: 1px solid">
-                                            <i class="fas fa-pencil-alt" style="font-size: 15px; margin-left: -5px; margin-top: 5px"></i>
-                                        </a>
-                                        @endadmincan
+                                <td><a href="{{ route('admin.profile.edit', $item->id) }}">{{ $item->id }}</a></td>
+                                <td><a href="{{ route('admin.profile.edit', $item->id) }}">{{ $item->name }}</a></td>
+                                <td>{{ $item->email }}</td>
+                                <td>
+                                    @if($item->is_admin)
+                                        <i class="fas fa-check text-success"></i>
+                                    @endif
+                                </td>
+                                <td>{{ $item->created_at }}</td>
+                                <td class="text-right">
+                                    @admincan('admin.profile.edit')
+                                    <a href="{{ route('admin.profile.edit', $item->id) }}" class="btn btn-success-soft btn-sm mr-1" style="background-color: rgb(211 250 255); color: #0fac04; width: 32px;border-color: rgb(167 255 247); border: 1px solid">
+                                        <i class="fas fa-pencil-alt" style="font-size: 15px; margin-left: -5px; margin-top: 5px"></i>
+                                    </a>
+                                    @endadmincan
 
-                                        <button-delete url-delete="{{ route('admin.profile.destroy', $item->id) }}"></button-delete>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="mt-2 clearfix ">
-                        <div class="float-right">
-                            {{ $items->links() }}
-                        </div>
+                                    <button-delete url-delete="{{ route('admin.profile.destroy', $item->id) }}"></button-delete>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="mt-2 clearfix ">
+                    <div class="float-right">
+                        {{ $items->links() }}
                     </div>
                 </div>
-                <!-- /.card -->
             </div>
+            <!-- /.card -->
         </div>
     </div>
 @stop
