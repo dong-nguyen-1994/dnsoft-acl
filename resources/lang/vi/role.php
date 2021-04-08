@@ -6,7 +6,7 @@ return [
     'display_name' => 'Tên hiển thị',
     'description'  => 'Mô tả',
     'created_at'   => 'Ngày tạo',
-    'is_admin'     => 'Là quản trị viên',
+    'is_admin'     => 'Là quản trị viên cấp cao nhất',
     'permissions'  => 'Quyền hạn',
 
     'button' => [

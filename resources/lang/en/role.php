@@ -6,7 +6,7 @@ return [
     'display_name' => 'Display Name',
     'description'  => 'Description',
     'created_at'   => 'Created At',
-    'is_admin'     => 'Is Admin',
+    'is_admin'     => 'Is Administration Of System',
     'permissions'  => 'Permissions',
 
     'button' => [
