@@ -11,16 +11,6 @@ use Dnsoft\Acl\Models\Admin;
 class AdminRepository extends BaseRepository implements AdminRepositoryInterface
 {
     /**
-     * @var Model|\Eloquent
-     */
-    protected $model;
-
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
-
-    /**
      * @param $email
      * @return \Illuminate\Database\Eloquent\Builder|Model|object
      */
@@ -29,33 +19,11 @@ class AdminRepository extends BaseRepository implements AdminRepositoryInterface
         return $this->model->where('email', $email)->first();
     }
 
-    public function all($columns = ['*'])
-    {
-        return $this->model->all($columns);
-    }
-
     public function allWithRoles($columns = ['*'], $roleColumns = ['id', 'name'])
     {
         return $this->model
             ->with('roles:' . implode(',', $roleColumns))
             ->get($columns);
-    }
-
-    public function paginate($itemPerPage)
-    {
-        return $this->model->paginate($itemPerPage);
-    }
-
-    public function find($id, $columns = ['*'])
-    {
-        return $this->model->findOrFail($id, $columns);
-    }
-
-    public function create(array $data)
-    {
-        $this->hashPassword($data);
-
-        return $this->model->create($data);
     }
 
     public function createWithRoles(array $data, $roles)
@@ -89,13 +57,6 @@ class AdminRepository extends BaseRepository implements AdminRepositoryInterface
         $user->roles()->sync($roles);
 
         return $user;
-    }
-
-    public function delete($id)
-    {
-        $model = $this->model->findOrFail($id);
-
-        return $model->delete();
     }
 
     /**
