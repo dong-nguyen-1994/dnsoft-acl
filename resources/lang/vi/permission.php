@@ -7,7 +7,7 @@ return [
         'destroy' => 'Xóa quyền',
     ],
 
-    'user' => [
+    'admin' => [
         'index'   => 'Danh sách quản trị viên',
         'create'  => 'Tạo mới quản trị viên',
         'edit'    => 'Sửa quản trị viên',
