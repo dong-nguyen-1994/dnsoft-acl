@@ -23,13 +23,17 @@ class ProfileRequest extends FormRequest
      */
     public function rules()
     {
-        $userId = \Auth::guard('admin')->id();
-
-        return [
-            'name'     => 'required',
-            'email'    => 'required|unique:admins,email,' . $userId,
-            'password' => 'nullable|required_with:password_confirmation|string|confirmed',
-        ];
+        $rules = [];
+        if (!is_admin()) {
+            $userId = \Auth::guard('admin')->id();
+            $rules = [
+                'name'     => 'required',
+                'email'    => 'required|unique:admins,email,' . $userId,
+                'password' => 'nullable|required_with:password_confirmation|string|confirmed',
+            ];
+        }
+        
+        return $rules;
     }
 
     public function attributes()

@@ -20,23 +20,21 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <form role="form" action="{{ route('admin.profile.store') }}" method="POST">
-            @csrf
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h4 class="card-title mb-1">{{ __('acl::profile.create.page_title') }}</h4>
-                        </div>
-                        @include('acl::admin.profile._field')
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">{{ __('core::button.save') }}</button>
-                            <button class="btn btn-secondary" name="continue" value="1" type="submit">{{ __('core::button.save_and_edit') }}</button>
-                        </div>
+    <form role="form" action="{{ route('admin.profile.store') }}" method="POST">
+        @csrf
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4 class="card-title mb-1">{{ __('acl::profile.create.page_title') }}</h4>
+                    </div>
+                    @include('acl::admin.profile._field')
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">{{ __('core::button.save') }}</button>
+                        <button class="btn btn-secondary" name="continue" value="1" type="submit">{{ __('core::button.save_and_edit') }}</button>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 @stop

@@ -1,8 +1,36 @@
 <?php
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
-if (!function_exists('admin_can')) {
+if (!function_exists('is_admin'))
+{
+    /**
+     * Check account is administrator
+     *
+     * @return bool
+     */
+    function is_admin()
+    {
+        /** @var \Dnsoft\Acl\Models\Admin $user */
+        $user = Auth::guard('admin')->user();
+
+        if ($user->is_admin) {
+            return true;
+        }
+
+        foreach ($user->roles as $role) {
+            if ($role->is_admin) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists('admin_can'))
+{
     /**
      * Check admin user has permission
      *
@@ -43,7 +71,8 @@ if (!function_exists('get_roles_options'))
     }
 }
 
-if (!function_exists('current_admin')) {
+if (!function_exists('current_admin'))
+{
     /**
      * Get current admin account
      *
