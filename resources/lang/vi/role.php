@@ -14,8 +14,8 @@ return [
     ],
 
     'index' => [
-        'page_title'    => 'Danh sách cái vai trò',
-        'page_subtitle' => 'Danh sách cái vai trò',
+        'page_title'    => 'Danh sách các vai trò',
+        'page_subtitle' => 'Danh sách các vai trò',
         'breadcrumb'    => 'Vai trò',
     ],
 
