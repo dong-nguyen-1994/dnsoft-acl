@@ -28,7 +28,7 @@ class ProfileRequest extends FormRequest
             $userId = \Auth::guard('admin')->id();
             $rules = [
                 'name'     => 'required',
-                'email'    => 'required|unique:admins,email,' . $userId,
+                'email'    => 'nullable|unique:admins,email,' . $userId,
                 'password' => 'nullable|required_with:password_confirmation|string|confirmed',
             ];
         }
