@@ -4,15 +4,15 @@ namespace Dnsoft\Acl\Models;
 
 use Dnsoft\Acl\Traits\HasPermission;
 use Dnsoft\Core\Traits\CacheableTrait;
-use Dnsoft\Media\Traits\HasMediaTrait;
+use Dnsoft\Media\Traits\HasMediaTraitFileManager;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
-    use HasMediaTrait;
     use Notifiable, HasPermission;
     use CacheableTrait;
+    use HasMediaTraitFileManager;
 
     protected $table = 'admins';
 
@@ -34,12 +34,12 @@ class Admin extends Authenticatable
     public function setAvatarAttribute($value)
     {
         static::saved(function ($model) use ($value) {
-            $model->syncMedia($value, 'avatar');
+            $model->attachMediaFileManager($value);
         });
     }
 
     public function getAvatarAttribute()
     {
-        return $this->getFirstMedia('avatar');
+        return $this->getFirstMedia();
     }
 }
