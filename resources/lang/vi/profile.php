@@ -39,8 +39,8 @@ return [
     ],
 
     'notification' => [
-        'created' => 'Tạo mới thông tin cá nhân thành công!',
-        'updated' => 'Cập nhật cá nhân thành công!',
-        'deleted' => 'Xóa cá nhân thành công!',
+        'created' => 'Tạo mới thông tin quản trị thành công!',
+        'updated' => 'Cập nhật thông tin quản trị thành công!',
+        'deleted' => 'Xóa thông tin quản trị thành công!',
     ],
 ];

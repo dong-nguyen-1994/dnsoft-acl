@@ -41,6 +41,7 @@
                             <th>{{ __('acl::profile.name') }}</th>
                             <th>{{ __('acl::profile.email') }}</th>
                             <th>{{ __('acl::profile.is_admin') }}</th>
+                            <th>{{ __('Is Demo Account') }}</th>
                             <th>{{ __('acl::profile.created_at') }}</th>
                             <th></th>
                         </tr>
@@ -53,6 +54,11 @@
                                 <td>{{ $item->email }}</td>
                                 <td>
                                     @if($item->is_admin)
+                                        <i class="fas fa-check text-success"></i>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($item->is_demo)
                                         <i class="fas fa-check text-success"></i>
                                     @endif
                                 </td>

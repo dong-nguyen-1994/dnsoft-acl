@@ -26,6 +26,10 @@ class Admin extends Authenticatable
         'avatar',
     ];
 
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'admin_role');

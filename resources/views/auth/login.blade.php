@@ -30,7 +30,7 @@
 
                             <div class="text-center w-75 m-auto">
                                 <a href="#">
-                                    <span><img src="{{ asset('vendor/dnsoft/admin/img/logo.png') }}" alt="" width="180"></span>
+                                    <span><img src="{{ asset('vendor/dnsoft/admin/img/dnsoft.png') }}" alt=""></span>
                                 </a>
                                 <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
                             </div>
@@ -84,7 +84,7 @@
 
 
     <footer class="footer footer-alt">
-        2016 - 2019 &copy; Minton theme by <a href="" class="text-muted">Coderthemes</a>
+        2020 - 2022 &copy; Nguyen Van Dong <a href="" class="text-muted"></a>
     </footer>
 
     <!-- Vendor js -->
