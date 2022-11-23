@@ -44,6 +44,6 @@ class Admin extends Authenticatable
 
     public function getAvatarAttribute()
     {
-        return $this->getFirstMedia();
+        return $this->getFirstMedia('admin');
     }
 }
