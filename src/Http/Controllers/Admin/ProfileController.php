@@ -1,10 +1,10 @@
 <?php
 
-namespace Dnsoft\Acl\Http\Controllers\Admin;
+namespace DnSoft\Acl\Http\Controllers\Admin;
 
-use Dnsoft\Acl\Http\Requests\ProfileRequest;
-use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
-use Dnsoft\Core\Facades\MenuAdmin;
+use DnSoft\Acl\Http\Requests\ProfileRequest;
+use DnSoft\Acl\Repositories\AdminRepositoryInterface;
+use DnSoft\Core\Facades\MenuAdmin;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,14 +26,16 @@ class ProfileController extends Controller
     public function index()
     {
         $items = $this->adminRepository->paginate(20);
-        return view('acl::admin.profile.index', compact('items'));
+        $version = get_version_actived();
+        return view("acl::$version.admin.profile.index", compact('items'));
     }
 
     public function create()
     {
         MenuAdmin::activeMenu('admin');
         $item = null;
-        return view('acl::admin.profile.create', compact('item'));
+        $version = get_version_actived();
+        return view("acl::$version.admin.profile.create", compact('item'));
     }
 
     public function store(ProfileRequest $request)
@@ -55,7 +57,8 @@ class ProfileController extends Controller
     {
         MenuAdmin::activeMenu('admin');
         $item = $this->adminRepository->getById($id);
-        return view('acl::admin.profile.edit', compact('item'));
+        $version = get_version_actived();
+        return view("acl::$version.admin.profile.edit", compact('item'));
     }
 
     /**

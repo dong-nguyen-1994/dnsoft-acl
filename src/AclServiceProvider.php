@@ -1,24 +1,24 @@
 <?php
 
-namespace Dnsoft\Acl;
+namespace DnSoft\Acl;
 
-use Dnsoft\Acl\Contracts\PermissionManagerInterface;
-use Dnsoft\Acl\Events\AclAdminMenuRegistered;
-use Dnsoft\Acl\Facades\Permission;
-use Dnsoft\Acl\Http\Middleware\AdminPermission;
-use Dnsoft\Acl\Http\Middleware\RedirectIfAdminAuth;
-use Dnsoft\Acl\Models\Admin;
-use Dnsoft\Acl\Models\Role;
-use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
-use Dnsoft\Acl\Repositories\Eloquents\AdminRepository;
-use Dnsoft\Acl\Repositories\Eloquents\RoleRepository;
-use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
-use Dnsoft\Core\Events\CoreAdminMenuRegistered;
+use DnSoft\Acl\Contracts\PermissionManagerInterface;
+use DnSoft\Acl\Events\AclAdminMenuRegistered;
+use DnSoft\Acl\Facades\Permission;
+use DnSoft\Acl\Http\Middleware\AdminPermission;
+use DnSoft\Acl\Http\Middleware\RedirectIfAdminAuth;
+use DnSoft\Acl\Models\Admin;
+use DnSoft\Acl\Models\Role;
+use DnSoft\Acl\Repositories\AdminRepositoryInterface;
+use DnSoft\Acl\Repositories\Eloquents\AdminRepository;
+use DnSoft\Acl\Repositories\Eloquents\RoleRepository;
+use DnSoft\Acl\Repositories\RoleRepositoryInterface;
+use DnSoft\Core\Events\CoreAdminMenuRegistered;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Dnsoft\Acl\Http\Middleware\AdminAuth;
+use DnSoft\Acl\Http\Middleware\AdminAuth;
 
 class AclServiceProvider extends ServiceProvider
 {

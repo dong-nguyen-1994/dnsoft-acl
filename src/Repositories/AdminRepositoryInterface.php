@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnsoft\Acl\Repositories;
+namespace DnSoft\Acl\Repositories;
 
 interface AdminRepositoryInterface
 {

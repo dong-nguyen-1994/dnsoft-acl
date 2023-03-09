@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnsoft\Acl\Http\Controllers\Auth;
+namespace DnSoft\Acl\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -47,7 +47,8 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('acl::auth.login');
+        $version = get_version_actived();
+        return view("acl::$version.auth.login");
     }
 
     public function login(Request $request)

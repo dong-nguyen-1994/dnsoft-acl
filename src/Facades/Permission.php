@@ -1,8 +1,8 @@
 <?php
 
-namespace Dnsoft\Acl\Facades;
+namespace DnSoft\Acl\Facades;
 
-use Dnsoft\Acl\Contracts\PermissionManagerInterface;
+use DnSoft\Acl\Contracts\PermissionManagerInterface;
 use Illuminate\Support\Facades\Facade;
 
 class Permission extends Facade

@@ -1,9 +1,9 @@
 <?php
 
-namespace Dnsoft\Acl\Repositories\Eloquents;
+namespace DnSoft\Acl\Repositories\Eloquents;
 
-use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
-use Dnsoft\Core\Repositories\BaseRepository;
+use DnSoft\Acl\Repositories\RoleRepositoryInterface;
+use DnSoft\Core\Repositories\BaseRepository;
 
 class RoleRepository extends BaseRepository implements RoleRepositoryInterface
 {

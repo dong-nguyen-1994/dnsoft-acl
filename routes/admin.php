@@ -1,7 +1,7 @@
 <?php
 
-use Dnsoft\Acl\Http\Controllers\Admin\RoleController;
-use Dnsoft\Acl\Http\Controllers\Admin\ProfileController;
+use DnSoft\Acl\Http\Controllers\Admin\RoleController;
+use DnSoft\Acl\Http\Controllers\Admin\ProfileController;
 
 Route::prefix('admin')->middleware(['web', 'admin.auth'])->group(function () {
 

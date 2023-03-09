@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnsoft\Acl\Events;
+namespace DnSoft\Acl\Events;
 
 class AclAdminMenuRegistered
 {

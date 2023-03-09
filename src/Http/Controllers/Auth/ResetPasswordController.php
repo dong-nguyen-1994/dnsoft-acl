@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnsoft\Acl\Http\Controllers\Auth;
+namespace DnSoft\Acl\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;

@@ -10,13 +10,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "Dnsoft\\Acl\\": "src/"
+            "DnSoft\\Acl\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Dnsoft\\Acl\\AclServiceProvider"
+                "DnSoft\\Acl\\AclServiceProvider"
             ]
         }
     }

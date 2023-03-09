@@ -1,8 +1,8 @@
 <?php
 
-use Dnsoft\Acl\Http\Controllers\Auth\LoginController;
-use Dnsoft\Acl\Http\Controllers\Auth\ForgotPasswordController;
-use Dnsoft\Acl\Http\Controllers\Auth\ResetPasswordController;
+use DnSoft\Acl\Http\Controllers\Auth\LoginController;
+use DnSoft\Acl\Http\Controllers\Auth\ForgotPasswordController;
+use DnSoft\Acl\Http\Controllers\Auth\ResetPasswordController;
 
 Route::prefix('admin')->middleware(['web'])->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('admin.login');

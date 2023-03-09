@@ -1,10 +1,10 @@
 <?php
 
-namespace Dnsoft\Acl\Models;
+namespace DnSoft\Acl\Models;
 
-use Dnsoft\Acl\Traits\HasPermission;
-use Dnsoft\Core\Traits\CacheableTrait;
-use Dnsoft\Media\Traits\HasMediaTraitFileManager;
+use DnSoft\Acl\Traits\HasPermission;
+use DnSoft\Core\Traits\CacheableTrait;
+use DnSoft\Media\Traits\HasMediaTraitFileManager;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 

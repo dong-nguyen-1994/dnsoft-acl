@@ -1,10 +1,10 @@
 <?php
 
-namespace Dnsoft\Acl\Http\Controllers\Admin;
+namespace DnSoft\Acl\Http\Controllers\Admin;
 
-use Dnsoft\Acl\Http\Requests\RoleRequest;
-use Dnsoft\Acl\Repositories\RoleRepositoryInterface;
-use Dnsoft\Core\Facades\MenuAdmin;
+use DnSoft\Acl\Http\Requests\RoleRequest;
+use DnSoft\Acl\Repositories\RoleRepositoryInterface;
+use DnSoft\Core\Facades\MenuAdmin;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,14 +26,16 @@ class RoleController extends Controller
     public function index()
     {
         $items = $this->roleRepository->paginate(20);
-        return view('acl::admin.role.index', compact('items'));
+        $version = get_version_actived();
+        return view("acl::$version.admin.role.index", compact('items'));
     }
 
     public function create()
     {
         MenuAdmin::activeMenu('role');
         $item = null;
-        return view('acl::admin.role.create', compact('item'));
+        $version = get_version_actived();
+        return view("acl::$version.admin.role.create", compact('item'));
     }
 
     public function store(RoleRequest $request)
@@ -55,7 +57,8 @@ class RoleController extends Controller
     {
         MenuAdmin::activeMenu('role');
         $item = $this->roleRepository->getById($id);
-        return view('acl::admin.role.edit', compact('item'));
+        $version = get_version_actived();
+        return view("acl::$version.admin.role.edit", compact('item'));
     }
 
     /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dnsoft\Acl;
+namespace DnSoft\Acl;
 
-use Dnsoft\Acl\Contracts\PermissionManagerInterface;
+use DnSoft\Acl\Contracts\PermissionManagerInterface;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 

@@ -1,4 +1,6 @@
-@extends('core::admin.master')
+@extends('core::v1.admin.master')
+
+@section('meta_title', __('acl::role.edit.page_title'))
 
 @section('content-header')
     <div class="row">
@@ -7,33 +9,31 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.role.index') }}">{{ __('acl::role.index.page_title') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('acl::role.create.index') }}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.role.index') }}">{{ __('acl::role.edit.breadcrumb') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('acl::role.edit.index') }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">{{ __('acl::role.create.page_title') }}</h4>
+                <h4 class="page-title">{{ __('acl::role.edit.page_title') }}</h4>
             </div>
         </div>
     </div>
 @endsection
 
 @section('content')
-    
-    <form role="form" action="{{ route('admin.role.store') }}" method="POST">
+    <form role="form" method="POST" action="{{ route('admin.role.update', $item->id) }}">
         @csrf
+        @method('PUT')
         <div class="row">
             <!-- left column -->
             <div class="col-md-6">
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">{{ __('acl::role.create.page_title') }}</h3>
+                        <h3 class="card-title">{{ __('acl::role.edit.page_title') }}</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-
                     @include('acl::admin.role._field')
-
                     <!-- /.card-body -->
 
                     <div class="card-footer">
@@ -44,8 +44,7 @@
                 <!-- /.card -->
             </div>
             <div class="col-md-6">
-{{--                    <dnsoft-tree></dnsoft-tree>--}}
-                <!-- general form elements -->
+            <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">{{ __('acl::role.permissions') }}</h3>
@@ -64,5 +63,4 @@
             </div>
         </div>
     </form>
-    
 @stop

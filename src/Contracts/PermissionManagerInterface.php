@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnsoft\Acl\Contracts;
+namespace DnSoft\Acl\Contracts;
 
 interface PermissionManagerInterface
 {

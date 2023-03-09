@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnsoft\Acl\Traits;
+namespace DnSoft\Acl\Traits;
 
 use Illuminate\Support\Collection;
 

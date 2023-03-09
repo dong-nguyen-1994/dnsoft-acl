@@ -1,12 +1,11 @@
 <?php
 
-namespace Dnsoft\Acl\Repositories\Eloquents;
+namespace DnSoft\Acl\Repositories\Eloquents;
 
-use Dnsoft\Acl\Repositories\AdminRepositoryInterface;
-use Dnsoft\Core\Repositories\BaseRepository;
+use DnSoft\Acl\Repositories\AdminRepositoryInterface;
+use DnSoft\Core\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-use Dnsoft\Acl\Models\Admin;
 
 class AdminRepository extends BaseRepository implements AdminRepositoryInterface
 {

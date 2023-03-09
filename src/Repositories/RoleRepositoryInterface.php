@@ -1,8 +1,8 @@
 <?php
 
-namespace Dnsoft\Acl\Repositories;
+namespace DnSoft\Acl\Repositories;
 
-use Dnsoft\Core\Repositories\BaseRepositoryInterface;
+use DnSoft\Core\Repositories\BaseRepositoryInterface;
 
 interface RoleRepositoryInterface extends BaseRepositoryInterface
 {
