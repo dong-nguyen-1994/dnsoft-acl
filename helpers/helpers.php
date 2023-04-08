@@ -59,7 +59,7 @@ if (!function_exists('get_roles_options'))
     {
         $options = [];
 
-        $categoryTreeList = \Dnsoft\Acl\Models\Role::all();
+        $categoryTreeList = \DnSoft\Acl\Models\Role::all();
         foreach ($categoryTreeList as $item) {
             $options[] = [
                 'value' => $item->id,
