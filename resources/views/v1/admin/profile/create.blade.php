@@ -28,7 +28,7 @@
                     <div class="card-header">
                         <h4 class="card-title mb-1">{{ __('acl::profile.create.page_title') }}</h4>
                     </div>
-                    @include('acl::admin.profile._field')
+                    @include('acl::v1.admin.profile._field')
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">{{ __('core::button.save') }}</button>
                         <button class="btn btn-secondary" name="continue" value="1" type="submit">{{ __('core::button.save_and_edit') }}</button>

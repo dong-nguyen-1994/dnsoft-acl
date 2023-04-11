@@ -109,12 +109,12 @@ class AclServiceProvider extends ServiceProvider
       $menu->add('Admin', [
         'route' => 'admin.profile.index',
         'parent' => $menu->system->id
-      ])->data('order', 1);
+      ])->data('order', 1)->prepend('<i class="fas fa-user-md"></i>');
 
       $menu->add('Role', [
         'route' => 'admin.role.index',
         'parent' => $menu->system->id
-      ])->data('order', 2);
+      ])->data('order', 2)->prepend('<i class="fab fa-critical-role"></i>');
 
       event(AclAdminMenuRegistered::class, $menu);
     });

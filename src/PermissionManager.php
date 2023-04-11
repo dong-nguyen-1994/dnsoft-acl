@@ -99,7 +99,12 @@ class PermissionManager implements PermissionManagerInterface
       }
 
       $groupKey = implode('.', $segments);
-      $groupLabelKey = str_replace('.', '.children.', $groupKey) . '.title';
+      $version = get_version_actived();
+      $name = 'title';
+      if ($version == 'v1') {
+        $name = 'label';
+      }
+      $groupLabelKey = str_replace('.', '.children.', $groupKey) . ".$name";
 
       if (!Arr::has($this->treePermissions, $groupLabelKey)) {
         Arr::set($this->treePermissions, $groupLabelKey, ucfirst(last($segments)));
