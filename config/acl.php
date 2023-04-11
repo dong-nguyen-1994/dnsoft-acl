@@ -12,7 +12,7 @@ return [
         'providers' => [
             'admins' => [
                 'driver' => 'eloquent',
-                'model'  => \Dnsoft\Acl\Models\Admin::class,
+                'model'  => \DnSoft\Acl\Models\Admin::class,
             ],
         ],
 
