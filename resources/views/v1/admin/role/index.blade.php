@@ -1,6 +1,6 @@
 @extends('core::v1.admin.master')
 
-@section('content-header')
+@section('breadcrumbs')
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -59,7 +59,7 @@
                                 </a>
                                 @endadmincan
 
-                                <button-delete url-delete="{{ route('admin.role.destroy', $item->id) }}"></button-delete>
+                                <x-button-delete-v1 url="{{ route('admin.role.destroy', $item->id) }}"></x-button-delete-v1>
                             </td>
                         </tr>
                             @endforeach

@@ -2,7 +2,7 @@
 
 @section('meta_title', __('acl::profile.index.page_title'))
 
-@section('content-header')
+@section('breadcrumbs')
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">

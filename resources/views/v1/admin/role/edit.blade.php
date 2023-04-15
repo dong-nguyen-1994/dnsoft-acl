@@ -2,7 +2,7 @@
 
 @section('meta_title', __('acl::role.edit.page_title'))
 
-@section('content-header')
+@section('breadcrumbs')
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -64,3 +64,6 @@
         </div>
     </form>
 @stop
+@push('scripts')
+  <script src="{{ asset('vendor/dnsoft/v1/admin/js/app.js') }}"></script>
+@endpush

@@ -1,6 +1,6 @@
 @extends('core::v1.admin.master')
 
-@section('content-header')
+@section('breadcrumbs')
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-    
+
     <form role="form" action="{{ route('admin.role.store') }}" method="POST">
         @csrf
         <div class="row">
@@ -64,5 +64,9 @@
             </div>
         </div>
     </form>
-    
+
 @stop
+
+@push('scripts')
+  <script src="{{ asset('vendor/dnsoft/v1/admin/js/app.js') }}"></script>
+@endpush

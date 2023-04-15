@@ -90,7 +90,7 @@ class ProfileController extends Controller
     {
         $this->adminRepository->delete($id);
 
-        if ($request->wantsJson()) {
+        if ($request->ajax()) {
             Session::flash('success', __('acl::profile.notification.deleted'));
             return response()->json([
                 'success' => true,
