@@ -30,9 +30,14 @@
 
               <div class="text-center w-75 m-auto">
                 <a href="#">
-                  <span><img src="{{ asset('vendor/dnsoft/v1/admin/img/dnsoft.png') }}" alt=""></span>
+                  <span>
+                    @if (get_setting_value_by_name('admin_logo'))
+                    <img src="{{ get_setting_value_by_name('admin_logo') }}" alt="" width="120px" height="110px"></span>
+                    @else
+                    <img src="{{ asset('vendor/dnsoft/v1/admin/img/dnsoft.png') }}" alt=""></span>
+                    @endif
                 </a>
-                <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
+                <p class="text-muted mb-4">Login to the admininstration system.</p>
               </div>
 
               <form action="{{ route('admin.login') }}" method="post">
