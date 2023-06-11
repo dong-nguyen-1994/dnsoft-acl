@@ -1,5 +1,12 @@
 <div class="card-body">
-    @input(['name' => 'name', 'label' => __('acl::profile.name')])
+    <div class="row">
+        <div class="col-md-6">
+        @input(['name' => 'name', 'label' => __('acl::profile.name')])
+        </div>
+        <div class="col-md-6">
+            @input(['name' => 'display_name', 'label' => __('Display Name')])
+        </div>
+    </div>
     @input(['name' => 'email', 'label' => __('acl::profile.email')])
     <div class="row">
         <div class="col-md-6">
