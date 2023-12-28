@@ -75,15 +75,11 @@ class PermissionManager implements PermissionManagerInterface
 
     $arrKey = str_replace('.', '.children.', $key);
 
-    $version = get_version_actived();
-
     $arrItem = [
       'key'   => $originKey,
       'title' => $label,
     ];
-    if ($version == 'v1') {
-      $arrItem['label'] = $label;
-    }
+    $arrItem['label'] = $label;
     Arr::set($this->treePermissions, $arrKey, $arrItem);
     return $this;
   }
@@ -99,11 +95,8 @@ class PermissionManager implements PermissionManagerInterface
       }
 
       $groupKey = implode('.', $segments);
-      $version = get_version_actived();
-      $name = 'title';
-      if ($version == 'v1') {
-        $name = 'label';
-      }
+      
+      $name = 'label';
       $groupLabelKey = str_replace('.', '.children.', $groupKey) . ".$name";
 
       if (!Arr::has($this->treePermissions, $groupLabelKey)) {
